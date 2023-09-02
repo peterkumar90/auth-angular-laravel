@@ -1,0 +1,52 @@
+<div class="container pt-5">
+  <form
+    ngNativeValidate
+    [formGroup]="myForm"
+    (ngSubmit)="submit()"
+    novalidate=""
+  >
+    <div class="form-group">
+      <label>Document Title</label>
+      <input
+        type="text"
+        formControlName="doc_name"
+        ngModel
+        name="doc_name"
+        required
+        class="form-control"
+      />
+      <div *ngIf="f.doc_name.touched || f.doc_name.invalid">
+        <div *ngIf="f.doc_name.errors?.required" class="text-danger">Title is required.</div>
+        <div *ngIf="f.doc_name.errors?.minlength" class="text-danger">
+          Title should be 3 character.
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Document Description</label>
+      <input
+        ngModel
+        required
+        formControlName="doc_des"
+        name="doc_des"
+        class="form-control"
+      />
+      <div *ngIf="f.doc_des.touched || f.doc_des.invalid">
+        <div *ngIf="f.doc_des.errors?.required" class="text-danger">Description is required.</div>
+      </div>
+    </div>
+    <div class="form-group d-block">
+      <input
+        ngModel
+        type="file"
+        name="doc_file"
+        accept=".pdf"
+        (change)="onFileChange($event)"
+      />
+      <div *ngIf="f.doc_file.touched || f.doc_file.invalid">
+        <div *ngIf="f.doc_file.errors?.required" class="text-danger">File is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-info mt-3">Submit</button>
+  </form>
+</div>

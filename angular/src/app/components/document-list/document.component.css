@@ -1,0 +1,7 @@
+.document-card .card-image {
+    flex-basis: 110px;
+}
+
+.document-card .card-content {
+    flex: 1;
+}

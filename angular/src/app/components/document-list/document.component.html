@@ -1,0 +1,31 @@
+<div class="container p-3">
+  <div class="d-flex justify-content-between py-3">
+    <h2>Documents list</h2>
+    <!-- <button class="btn btn-info" (click)="logout()">Add Document</button> -->
+    <button
+      [routerLink]="['/document-create']"
+      type="button"
+      class="btn btn-info"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      Add Document
+    </button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody *ngIf="listData">
+      <tr *ngFor="let item of listData">
+        <th scope="row">{{item.doc_title}}</th>
+        <td>{{item.doc_description}}</td>
+        <td><a class="btn btn-info" target="_blank" href={{item.doc_file}} >Open</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
